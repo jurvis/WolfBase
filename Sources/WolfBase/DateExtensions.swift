@@ -42,7 +42,9 @@ extension Date {
         if s.count == 10 {
             s += "T00:00:00Z"
         }
-        self = try Date(s, strategy: .iso8601)
+
+        let formatter = ISO8601DateFormatter()
+        self = formatter.date(from: s) ?? Date()
     }
 }
 
